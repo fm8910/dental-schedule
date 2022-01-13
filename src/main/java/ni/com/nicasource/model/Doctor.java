@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,12 +18,17 @@ public class Doctor implements Serializable {
 
     private String name;
 
+    @OneToOne //(optional = false)
+    @JoinColumn(name = "week_schedule_id", referencedColumnName = "id")
+    private List<Availability> availabilities;
+
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "doctor")
     private Set<Patient> patients;
+
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "doctor")
     private Set<Appointment> appointments;

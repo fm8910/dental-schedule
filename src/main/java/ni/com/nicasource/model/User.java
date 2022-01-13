@@ -37,18 +37,5 @@ public class User {
     @Roles
     private String role;
 
-    @Column(name = "first_name", nullable = false)
-    @NotBlank
-    @Size(max = 256)
-    private String firstName;
-
-    @Column(name = "last_name", nullable = false)
-    @NotBlank
-    @Size(max = 256)
-    private String lastName;
-
-    @Column(name = "age", nullable = false)
-    @Min(1)
-    @Max(200)
-    private int age;
+    private String names;
 }

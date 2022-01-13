@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "appointments")
-
 public class Appointment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,13 +24,4 @@ public class Appointment implements Serializable {
     private Doctor doctor;
 
     private LocalDate date;
-
-    private LocalTime startTime;
-
-    private LocalTime endTime;
-
-    private String description;
-
-
-
 }

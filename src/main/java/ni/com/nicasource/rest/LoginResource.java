@@ -21,7 +21,7 @@ public class LoginResource {
     private UserRepository userRepository;
 
     @POST
-    @Path("/login")
+    @Path("login")
     @PermitAll
     @APIResponses(value = {
             @APIResponse(responseCode = "200", description = "Successful login", content = @Content(schema = @Schema(implementation = User.class))),
@@ -33,7 +33,7 @@ public class LoginResource {
     }
 
     @POST
-    @Path("/signup")
+    @Path("signup")
     @PermitAll
     @Operation(summary = "Adds a user", description = "Creates a user and persists into database")
     @APIResponses(value = @APIResponse(responseCode = "200", description = "Success",
@@ -44,10 +44,5 @@ public class LoginResource {
         return "User created successfully";
     }
 
-    @POST
-    @Path("/login")
-    public String login() {
-        return "OK";
-    }
 
 }
