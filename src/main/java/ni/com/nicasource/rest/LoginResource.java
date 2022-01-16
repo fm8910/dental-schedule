@@ -29,6 +29,7 @@ public class LoginResource {
     })
     @Operation(summary = "Login", description = "Login with username and password")
     public User login(User user) {
+        System.out.println("iniciando sesión");
         return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
     }
 

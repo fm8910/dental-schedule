@@ -4,18 +4,24 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "day_schedules")
+@Table(name = "doctor_available")
 @Data
-public class Availability implements Serializable {
+public class DoctorAvailable implements Serializable {
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "doctor_id", referencedColumnName = "id")
+    private Doctor doctor;
+
     @Enumerated(value = EnumType.STRING)
+    @Column(name = "day_of_week")
     private DayOfWeek dayOfWeek;
 
     @Column(name = "start_time")
@@ -23,9 +29,6 @@ public class Availability implements Serializable {
 
     @Column(name = "end_time")
     private LocalTime endTime;
-
-    @Column(name = "is_available")
-    private Boolean isAvailable;
 
 
 }

@@ -37,5 +37,6 @@ public class User {
     @Roles
     private String role;
 
+    @Column(name = "complete_names", nullable = false)
     private String names;
 }

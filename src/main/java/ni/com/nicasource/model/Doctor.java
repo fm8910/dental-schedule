@@ -18,18 +18,14 @@ public class Doctor implements Serializable {
 
     private String name;
 
-    @OneToOne //(optional = false)
-    @JoinColumn(name = "week_schedule_id", referencedColumnName = "id")
-    private List<Availability> availabilities;
-
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "doctor")
-    private Set<Patient> patients;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor", orphanRemoval = true)
+    private Set<DoctorAvailable> doctorAvailables;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "doctor")
+    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "doctor")
     private Set<Appointment> appointments;
 }

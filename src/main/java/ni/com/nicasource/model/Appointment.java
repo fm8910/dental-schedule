@@ -1,15 +1,15 @@
 package ni.com.nicasource.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 @Entity
 @Table(name = "appointments")
+@Data
 public class Appointment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +24,9 @@ public class Appointment implements Serializable {
     private Doctor doctor;
 
     private LocalDate date;
+
+    private LocalTime startTime;
+
+    private LocalTime endTime;
+
 }
